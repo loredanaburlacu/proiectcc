@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GitHub Repos</title>
+    </head>
+    <body>
+        <table>
+<!-- here goes our data! -->
+</table>
+        <div id="app">
+            
+        </div>
+        <script type="text/javascript">
+        
+        function json2array(json){
+    var result = [];
+    var keys = Object.keys(json);
+    keys.forEach(function(key){
+        result.push(json[key]);
+    });
+    return result;
+}
+
+        window.onload = async()=> {
+    let url='http://api.tvmaze.com/shows/1/episodes'
+    
+    let response = await fetch(url)
+    let jokes = await response.json();
+    console.log(jokes)
+  var result=[];
+  result= json2array(jokes)
+     console.log(result)
+ 
+document.getElementById("app").innerHTML=`
+<h1 class="app-title">Shows ${jokes.length}</h1>
+${result.map(function (shows){
+return `
+<div>
+<h3>${shows.name}</h3>
+<p>It will start:${shows.airdate}</p>
+<p>At hour ${shows.airtime}</p>
+<p>Season number: ${shows.season}</p>
+<p>Episode number ${shows.number}</p>
+<img src="${shows.image.medium}">
+</div>
+`
+
+}).join('')}
+
+
+`
+
+}
+    </script>
+    </body>
+</html>
