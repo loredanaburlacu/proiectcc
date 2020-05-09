@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GitHub Repos</title>
+        <title>Shows</title>
     </head>
     <body>
-        <table>
-<!-- here goes our data! -->
-</table>
-        <div id="app">
-            
-        </div>
-        <script type="text/javascript">
+
+   >
+       <div id="app">  </div>
+         <script type="text/javascript">
         
         function json2array(json){
     var result = [];
@@ -22,17 +19,19 @@
 }
 
         window.onload = async()=> {
+            
+          
     let url='http://api.tvmaze.com/shows/1/episodes'
     
     let response = await fetch(url)
-    let jokes = await response.json();
-    console.log(jokes)
+    let show = await response.json();
+    console.log(show)
   var result=[];
-  result= json2array(jokes)
+  result= json2array(show)
      console.log(result)
- 
+
 document.getElementById("app").innerHTML=`
-<h1 class="app-title">Shows ${jokes.length}</h1>
+<h1 class="app-title">Show results: ${show.length}</h1>
 ${result.map(function (shows){
 return `
 <div>
