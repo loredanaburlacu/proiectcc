@@ -4,9 +4,9 @@
         <title>GitHub Repos</title>
     </head>
     <body>
-  <h1>sedwfwef</h1>
-    <input type="text" name="id" id="id" />
-        <button type="submit">subm</button>
+ <label for="">Id show:</label>
+    <input type="text" name="idtext" id="idtext" />
+       <button onclick="getId()">Get list of episodes</button>
        <div id="app">  </div>
          <script type="text/javascript">
         
@@ -19,11 +19,12 @@
     return result;
 }
 
-        window.onload = async()=> {
-            
-            let id= document.getElementById('id').value
-    let url='http://api.tvmaze.com/shows/${id}/episodes'
-    
+       async function getId() {
+
+            let id= document.getElementById('idtext').value
+            console.log(id)
+    let url=`http://api.tvmaze.com/shows/${id}/episodes`
+      console.log(url)
     let response = await fetch(url)
     let show = await response.json();
     console.log(show)
