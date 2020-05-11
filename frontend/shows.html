@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Shows</title>
+        <title>GitHub Repos</title>
     </head>
     <body>
-
-   >
+ <label for="">Id show:</label>
+    <input type="text" name="idtext" id="idtext" />
+       <button onclick="getId()">Get list of episodes</button>
        <div id="app">  </div>
          <script type="text/javascript">
         
@@ -18,11 +19,12 @@
     return result;
 }
 
-        window.onload = async()=> {
-            
-          
-    let url='http://api.tvmaze.com/shows/1/episodes'
-    
+       async function getId() {
+
+    let id= document.getElementById('idtext').value
+            console.log(id)
+    let url=`http://api.tvmaze.com/shows/${id}/episodes`
+      console.log(url)
     let response = await fetch(url)
     let show = await response.json();
     console.log(show)
@@ -41,6 +43,7 @@ return `
 <p>Season number: ${shows.season}</p>
 <p>Episode number ${shows.number}</p>
 <img src="${shows.image.medium}">
+<p>You can find episode at URL: ${shows.url}</p>
 </div>
 `
 
