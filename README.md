@@ -1,5 +1,5 @@
 # Proiect cloud computing 
-## Intorducere si descriere problema
+## Introducere si descriere problema
 
 In criza actuala generata de pandemie, foarte multi oameni lucreaza de acasa. In cadrul companiilor este o provocare sa mentina starea de spirit si productivitatea angajatilor la cote maixme.
 Pentru asta, anumiti angajatori au pornit un brainstorming despre modurile in care un angajat poate avea acces la diverse tipuri de divertisment in timpul orelor de munca, de acasa, la resurse puse la dispozitie de angajator.
