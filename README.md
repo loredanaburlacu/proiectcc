@@ -202,6 +202,11 @@ Pagina pe care o deschidem prima oara la accesare este index.html unde va fi afi
 ## Publicarea aplicatiei
 Codul sursa al aplicatiei se afla pe github la : https://github.com/loredanaburlacu/proiectcc
 Aplicatia a fost publicata pe Azure la: https://loredanaproiectcc.azurewebsites.net/
+# Referinte 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+http://www.tvmaze.com/api
+https://github.com/15Dkatz/official_joke_api
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch 
 
 # Licenta
 Aceasta aplicatie este dezvoltata doar pentru scopuri demonstrative si etape de invatare, fara scop comercial. 
