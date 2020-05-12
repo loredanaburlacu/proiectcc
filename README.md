@@ -5,7 +5,7 @@ In criza actuala generata de pandemie, foarte multi oameni lucreaza de acasa. In
 Pentru asta, anumiti angajatori au pornit un brainstorming despre modurile in care un angajat poate avea acces la diverse tipuri de divertisment in timpul orelor de munca, de acasa, la resurse puse la dispozitie de angajator.
 Cateva idei au fost Dj live in pauza de pranz, concursuri cu poze din activitatile pe care le fac acasa, o sursa de inspiratie pentru filme, o pagina de glume. Pentru a usura accesul la astfel de informatii, angajatorul are nevoie de o platforma unde sa afiseze aceste informatii si sa o publice intr-un spatiu accesibil usor. 
 In aplicatia pe care am dezvoltat-o am oferit angajatilor posibilitatea de a accesa o pagina cu 10 glume care se actualizeaza la fiecare incarcare si la o pagina unde au trimiteri catre anumite seriale de pe un canal TVMaze unde angajatii vor avea conturi de vizualizare. 
-Pentru a dezvolta aplicatia, este necesar un mediu accesibil mai multor dezvoltatori, astfel s-a ales Cloud 9. Pentru a fi o aplicatie colaborativa, s-a ales ca source code repository GitHub unde pot fi deployate versiuni ale aplicatiei  la care sa aiba acces mai multe persoane sis a poata integra mai multe module sau sa aduca modificari, fiind un proiect ce se doreste sa aduca un beneficiu intregii companii.
+
 
 ## Prezentare API-uri utilizate
 
@@ -25,7 +25,7 @@ Din punct de vedere autorizare si autentificare, nu foloseste nicio metoda (api 
 
 
 ## API TVMaze 
-Toate endpoint-urile sunt accesiible folosind si HTTPS. 
+Toate endpoint-urile sunt accesibile folosind si HTTPS. 
 Raspunsurile vor fi returnate in HTTP dar pot fi accesate si ca HTTPS daca schimbi manual in url. 
 Din punct de vedere autorizare si autentificare, nu foloseste nicio metoda (api key sau oauth). Licenta apartine CC BY SA si se poate folosi acest api cu orice scop atat tip cat este specificat ca apartine TVMaze. Request-urile sunt limitate la un numar de 20 la 10 secunde per adresa IP. Daca depasesti aceasta rata, e posibil sa primesti o eroare HTTP 429.
 Resursele din API au o proprietate pentru imagine care reprezinta imaginea fiecarui element.
@@ -137,7 +137,7 @@ Response este in format JSON si contine o lista de episoade pentru serialul cu i
         }
     },
 ```
-Numele fiecarei proprietati sunt sugestive iar informatiile oferite sunt despre sezon si numarul episodului, data de lansare si ora, o image, o scurta descriere si un link catre un url unde gasesc mai multe informatii.
+Numele fiecarei proprietati este sugestiv pentru semnificatie iar informatiile oferite sunt despre sezon si numarul episodului, data de lansare si ora, o image, o scurta descriere si un link catre un url unde gasesc mai multe informatii.
 La randul sau, informatia mai integreaza un API -href": "http://api.tvmaze.com/episodes/1. 
 
 ## Dezvoltarea aplicatiei si parsarea API-urilor
@@ -181,7 +181,12 @@ Folosind fetch()  am accesat informatia din raspuns.  fetch()
   let url='https://official-joke-api.appspot.com/random_ten'
   let response = await fetch(url)
 O data ce avem raspunsul, il putem parsa si folosi in structura tabelara.
-
+```
+ let data=Object.keys(jokes[0]);
+    let table = document.querySelector("table");
+    generateTable(table, jokes);
+    generateTableHead(table,data)
+ ```
 ## In shows.html 
 
 Endpoint-ul api-ului ne ofera posibilitatea sa ne configuram noi un id pentru fiecare serial. Astfel, pe baza unei informatii text dintr-un textbox, vom face submit iar in spatele submit-ului se afla o functie javascirpt: getId()
@@ -196,7 +201,25 @@ function json2array(json){
 }
 
 Am facut acest pas pentru a folosi map() in parsarea informatiilor. Astfel, pentru fiecare shows din array-ul result , vom afisa informatile care ne intereseaza in interfata.
-
+```
+document.getElementById("app").innerHTML=`
+<h1 class="app-title">Show results: ${show.length}</h1>
+${result.map(function (shows){
+return `
+<div>
+<h3>${shows.name}</h3>
+<p>It will start:${shows.airdate}</p>
+<p>At hour ${shows.airtime}</p>
+<p>Season number: ${shows.season}</p>
+<p>Episode number ${shows.number}</p>
+<img src="${shows.image.medium}">
+<p>You can find episode at URL: ${shows.url}</p>
+</div>
+`
+}).join('')}
+`}
+``` 
+Join() elimina spatiile dintre informatii, in cazul nostru, virgula. 
 Pagina pe care o deschidem prima oara la accesare este index.html unde va fi afisat doar meniul de navigare. 
 
 ## Publicarea aplicatiei
