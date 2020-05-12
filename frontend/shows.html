@@ -4,20 +4,19 @@
          <link rel="stylesheet" type="text/css" href="css.css">
     </head>
     <body>
-              <ul>
+ <ul>
   <li><a href="index.html">Home</a></li>
   <li><a href="jokes.html">Jokes</a></li>
   <li><a href="shows.html">Shows</a></li>
-
 </ul> 
 <br>
  <label for="">Id show:</label>
-    <input type="text" name="idtext" id="idtext" />
-       <button onclick="getId()">Get list of episodes</button>
-       <div id="app">  </div>
-         <script type="text/javascript">
+ <input type="text" name="idtext" id="idtext" />
+ <button onclick="getId()">Get list of episodes</button>
+ <div id="app">  </div>
+<script type="text/javascript">
         
-        function json2array(json){
+function json2array(json){
     var result = [];
     var keys = Object.keys(json);
     keys.forEach(function(key){
@@ -25,19 +24,16 @@
     });
     return result;
 }
-
-       async function getId() {
+ async function getId() {
 
     let id= document.getElementById('idtext').value
-            console.log(id)
     let url=`http://api.tvmaze.com/shows/${id}/episodes`
-      console.log(url)
     let response = await fetch(url)
     let show = await response.json();
     console.log(show)
-  var result=[];
-  result= json2array(show)
-     console.log(result)
+    var result=[];
+    result= json2array(show)
+   
 
 document.getElementById("app").innerHTML=`
 <h1 class="app-title">Show results: ${show.length}</h1>
@@ -53,13 +49,8 @@ return `
 <p>You can find episode at URL: ${shows.url}</p>
 </div>
 `
-
 }).join('')}
-
-
-`
-
-}
+`}
     </script>
     </body>
 </html>

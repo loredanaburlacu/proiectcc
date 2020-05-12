@@ -3,21 +3,17 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css.css">
     </head>
-    <body>
-      <ul>
+<body>
+  <ul>
   <li><a href="index.html">Home</a></li>
   <li><a href="jokes.html">Jokes</a></li>
   <li><a href="shows.html">Shows</a></li>
-
 </ul> 
         <table>
 <!-- here goes our data! -->
 </table>
-
-        <div id="content">
-            
-        </div>
-        <script type="text/javascript">
+ <div id="content"></div>
+ <script type="text/javascript">
         
 function generateTable(table, data) {
   for (let element of data) {
@@ -39,7 +35,6 @@ function generateTableHead(table, data) {
     row.appendChild(th);
   }
 }
-//fetch
 window.onload = async()=> {
     let url='https://official-joke-api.appspot.com/random_ten'
     
